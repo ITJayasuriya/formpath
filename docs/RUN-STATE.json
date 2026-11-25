@@ -4,17 +4,14 @@
   "state": "in_progress",
   "planned_daily_goal": "M0 API decision and M1 core: constrained definitions, active payload, navigation and synthetic loan/volunteer fixtures",
   "commit_target": 4,
-  "completed_unit_ids": ["definition-boundary"],
-  "actual_commit_shas": [],
+  "completed_unit_ids": ["definition-boundary", "active-payload"],
+  "actual_commit_shas": ["db247b3"],
   "branch": "feat/core-alpha",
   "open_pr": null,
-  "last_tested_sha": "537f70c plus definition-boundary working tree",
-  "actual_test_results": ["10 definition tests passed", "npm run check passed"],
-  "next_action": "Finish active payload validation and projection tests",
-  "dirty_files": [
-    "packages/core/src/path.ts",
-    "packages/core/src/path.test.ts"
-  ],
+  "last_tested_sha": "db247b3 plus active-payload working tree",
+  "actual_test_results": ["14 domain tests passed", "npm run check passed"],
+  "next_action": "Implement pure next/back/review-edit/deep-link transitions and regression tests",
+  "dirty_files": [],
   "blocker": null,
-  "updated_at": "2026-11-25T11:48:46.278171+00:00"
+  "updated_at": "2026-11-25T11:49:31.241374+00:00"
 }

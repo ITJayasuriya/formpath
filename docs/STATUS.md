@@ -23,3 +23,9 @@ Next: active-payload projection/validation, then pure navigation and fixtures.
 Research/pilot validation remains unavailable; no interviews are claimed.
 All other M1–M4 scope remains open, including React bindings, actual loan UI,
 Next.js integration, drafts, submission recovery, docs/Storybook and packaging.
+
+Active payload unit: 14 domain tests and check pass on `db247b3` plus working
+tree. Hidden fields and unknown keys are omitted; hidden answers cannot drive
+later branches. Only active required fields validate; date-only ISO values,
+choice membership, booleans and duplicate selections have explicit rules.
+Next: navigation, review corrections and guarded deep links.

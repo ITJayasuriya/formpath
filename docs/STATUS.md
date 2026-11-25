@@ -29,3 +29,12 @@ tree. Hidden fields and unknown keys are omitted; hidden answers cannot drive
 later branches. Only active required fields validate; date-only ISO values,
 choice membership, booleans and duplicate selections have explicit rules.
 Next: navigation, review corrections and guarded deep links.
+
+Navigation unit: 21 domain tests, check and build passed on `0fa5a1c` plus working
+tree. Pure transitions return explicit heading/field/error focus intentions;
+review edits visit newly required steps and return to review. Deep links cannot
+skip incomplete prerequisites. Synthetic loan and volunteer definitions exercise
+the same engine; neither is a working consuming UI yet.
+Two local Chromium/WebKit setup smoke/axe checks passed after rerunning outside
+the sandbox (initial Vite bind failed with EPERM). Firefox remains CI-only.
+Next: final API/research/review record, PR and required CI.

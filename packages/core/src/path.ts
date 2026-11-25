@@ -47,12 +47,7 @@ export function activePath(flow: FlowDefinition, answers: Answers) {
       if (Object.hasOwn(answers, field.id)) {
         const value = answers[field.id];
         if (value !== undefined)
-          Object.defineProperty(payload, field.id, {
-            value: Array.isArray(value) ? [...value] : value,
-            enumerable: true,
-            configurable: true,
-            writable: true,
-          });
+          payload[field.id] = Array.isArray(value) ? [...value] : value;
       }
     }
   }

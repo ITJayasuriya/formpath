@@ -4,14 +4,23 @@
   "state": "in_progress",
   "planned_daily_goal": "M0 API decision and M1 core: constrained definitions, active payload, navigation and synthetic loan/volunteer fixtures",
   "commit_target": 4,
-  "completed_unit_ids": ["definition-boundary", "active-payload"],
-  "actual_commit_shas": ["db247b3"],
+  "completed_unit_ids": [
+    "definition-boundary",
+    "active-payload",
+    "navigation-fixtures"
+  ],
+  "actual_commit_shas": ["db247b3", "0fa5a1c"],
   "branch": "feat/core-alpha",
   "open_pr": null,
-  "last_tested_sha": "db247b3 plus active-payload working tree",
-  "actual_test_results": ["14 domain tests passed", "npm run check passed"],
-  "next_action": "Implement pure next/back/review-edit/deep-link transitions and regression tests",
+  "last_tested_sha": "0fa5a1c plus navigation working tree",
+  "actual_test_results": [
+    "21 domain tests passed",
+    "npm run check passed",
+    "npm run build passed",
+    "2 local Chromium/WebKit setup smoke/axe tests passed"
+  ],
+  "next_action": "Document API/research decision and review findings; run final validation, open PR and await CI",
   "dirty_files": [],
   "blocker": null,
-  "updated_at": "2026-11-25T11:49:31.241374+00:00"
+  "updated_at": "2026-11-25T11:52:03.882031+00:00"
 }

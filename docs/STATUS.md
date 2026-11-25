@@ -11,3 +11,15 @@ Next: M0 discovery and first vertical slice from IMPLEMENTATION.md. No product u
 Deferred tool integrations: unused Storybook (FormPath) and PWA tooling (RepairRelay) were removed after moderate transitive advisories. Select secure compatible versions when those milestones start.
 
 Read SETUP-RESULT.md and OPERATIONS.md for verified setup and release prerequisites. All main-branch CI checks passed on Linux including all three browser engines. Do not create scheduled tasks: the owner will create them after readiness review.
+
+## 25 November 2026 — day 1, core foundation in progress
+
+Branch: `feat/core-alpha`; no implementation PR yet. Starting revision: `537f70c`.
+Definition boundary implemented in `packages/core/src`: strict runtime schemas,
+unique field/step IDs, earlier-step references only, eight-level condition limit,
+and constrained operators. Ten domain tests and `npm run check` pass on the
+working tree based on that revision. No UI changes or deployment yet.
+Next: active-payload projection/validation, then pure navigation and fixtures.
+Research/pilot validation remains unavailable; no interviews are claimed.
+All other M1–M4 scope remains open, including React bindings, actual loan UI,
+Next.js integration, drafts, submission recovery, docs/Storybook and packaging.

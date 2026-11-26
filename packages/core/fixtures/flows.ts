@@ -47,6 +47,9 @@ export const loan = parseDefinition({
     {
       id: "dates",
       title: "Requested dates",
+      rules: [
+        { kind: "dateOrder", startField: "startDate", endField: "endDate" },
+      ],
       fields: [
         { id: "startDate", label: "Start date", kind: "date", required: true },
         { id: "endDate", label: "End date", kind: "date", required: true },

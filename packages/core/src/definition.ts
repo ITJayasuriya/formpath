@@ -56,6 +56,16 @@ const stepSchema = z.strictObject({
   title: z.string().min(1).max(500),
   visibleWhen,
   fields: z.array(fieldSchema).min(1).max(100),
+  rules: z
+    .array(
+      z.strictObject({
+        kind: z.literal("dateOrder"),
+        startField: id,
+        endField: id,
+      }),
+    )
+    .max(100)
+    .default([]),
 });
 const definitionSchema = z.strictObject({
   id,
@@ -94,6 +104,19 @@ export function parseDefinition(input: unknown): FlowDefinition {
       if (condition && references(condition).some((ref) => !fields.has(ref))) {
         throw new Error(
           `Condition in ${step.id} must reference earlier fields`,
+        );
+      }
+    }
+    for (const rule of step.rules) {
+      const start = step.fields.find((field) => field.id === rule.startField);
+      const end = step.fields.find((field) => field.id === rule.endField);
+      if (
+        rule.startField === rule.endField ||
+        start?.kind !== "date" ||
+        end?.kind !== "date"
+      ) {
+        throw new Error(
+          `Date order in ${step.id} requires two distinct date fields in that step`,
         );
       }
     }

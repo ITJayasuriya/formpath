@@ -1,7 +1,7 @@
 # Status
 
 Stage: internal M1 core alpha; no working product UI or published package yet.
-Delivery window: 25 November 2026–5 January 2027. Day 1 of 42.
+Delivery window: 25 November 2026–5 January 2027. Day 2 of 42.
 
 ## 25 November — delivered
 
@@ -17,18 +17,24 @@ Delivery window: 25 November 2026–5 January 2027. Day 1 of 42.
   records in `docs/decisions/001-core-alpha.md` and
   `docs/research/2026-11-25-discovery.md`.
 
-PR: https://github.com/ITJayasuriya/formpath/pull/12 (`feat/core-alpha`).
+Merged PR: https://github.com/ITJayasuriya/formpath/pull/12.
+Local branch: `main`; squash merge `46be070`.
 Implementation commits: `db247b3`, `0fa5a1c`, `0005e02`.
 Daily target: four coherent commits, selected once; fourth is the API/research
-and verification record. Do not reroll or start a second daily implementation.
+and verification record (`28b7539`). Daily goal completed and integrated.
+Do not reroll or start a second daily implementation.
 
 ## Verification
 
-Tested implementation revision: `0005e02`; remaining changes are documentation.
+Tested final PR revision: `28b7539` (same implementation as `0005e02`).
+Final post-merge operational updates to STATUS/RUN-STATE remain local and should
+be preserved and committed with the next implementation; no product code is dirty.
 `npm run check`, 21 domain tests and `npm run build` passed. Two Chromium/WebKit
 setup-page smoke/axe tests passed locally; they do not test a product UI.
 Initial sandbox Vite bind failed with EPERM; authorized rerun passed.
-Required Linux CI on the PR runs all three engines; awaiting its final head check.
+Required Linux CI passed on final PR head `28b7539`: check, 21 domain tests,
+build and three Chromium/Firefox/WebKit setup smoke/axe tests.
+Evidence: https://github.com/ITJayasuriya/formpath/actions/runs/45608743533.
 Local Firefox has the previously documented startup failure and was not run.
 
 The existing live site https://isuru-formpath.pages.dev returned HTTP 200; checked
@@ -66,3 +72,17 @@ proceeds provisionally with synthetic engineering evidence, without claiming
 validated demand or closing issue #4. Issues #5–#7 remain broader incomplete
 milestones. No credentials or service access block current implementation.
 First npm publication/trusted-publisher binding may later require owner action.
+
+## 26 November — core validation in progress
+
+Daily target: three coherent commits. Same implementation branch throughout:
+`feat/core-validation-types`. Added constrained same-step date-order rules to
+parsed definitions and the loan fixture. Active validation, guarded navigation
+and final submission use the same rule, with same-day loans permitted. Missing,
+invalid and hidden dates retain existing field/visibility policies.
+
+Working tree: 29 domain tests and build passed. Check initially found checkpoint
+JSON formatting only; rerun after formatting before commit. Next: literal
+schema factory and inferred answers, then regression/documentation review.
+PR triage: #3 TypeScript 7 cannot install (typescript-eslint requires <6.1).
+#1/#2 are optional major Actions updates, deferred rather than merged on old CI.

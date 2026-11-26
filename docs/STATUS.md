@@ -153,3 +153,9 @@ behavior and installs both browsers needed by the local command. Build embeds
 its actual Git revision in the footer for deployment verification. Final planned
 unit is the integration/evidence guide. Remaining mandatory scope above remains
 open; no npm publication or pilot validation is claimed.
+
+Final accessibility review found missing native required semantics. Required
+radio/text/date controls now expose their required state while form `noValidate`
+keeps the core error-summary policy in charge. Added the browser assertion.
+This necessary correction is a sixth commit beyond the target of five; no
+padding work was added. Required CI must use this corrected head.

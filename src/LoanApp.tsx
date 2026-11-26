@@ -126,6 +126,7 @@ export function LoanApp() {
                             <label className="choice" key={option}>
                               <input
                                 type="radio"
+                                required={field.required}
                                 name={field.id}
                                 value={option}
                                 checked={value === option}
@@ -151,6 +152,7 @@ export function LoanApp() {
                           </label>
                           <input
                             id={`field-${field.id}`}
+                            required={field.required}
                             type={field.kind === "date" ? "date" : "text"}
                             value={typeof value === "string" ? value : ""}
                             aria-describedby={describedBy}

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "local_date": "2026-11-27",
-  "state": "in_progress",
+  "state": "awaiting_ci",
   "planned_daily_goal": "Memory-only React loan flow with accessible errors and review correction browser journeys",
   "commit_target": 5,
   "completed_unit_ids": [
@@ -11,19 +11,17 @@
     "accessible-error-pattern",
     "integration-evidence-guide"
   ],
-  "actual_commit_shas": ["e4c59b2", "ea49589", "a845cc8", "ded3378"],
+  "actual_commit_shas": ["e4c59b2", "ea49589", "a845cc8", "ded3378", "0dd6866"],
   "branch": "feat/loan-ui",
-  "open_pr": null,
-  "last_tested_sha": "6219821fd87d2b54ad537439e0ed7f6b81fc27a7",
+  "open_pr": "https://github.com/ITJayasuriya/formpath/pull/14",
+  "last_tested_sha": "0dd6866",
   "actual_test_results": [
     "check,41 core tests,build passed",
     "4 product browser tests passed Chromium/WebKit; local Firefox not run",
     "Desktop/mobile screenshots inspected; existing live site still setup marker"
   ],
-  "next_action": "Check final documentation/revision marker, commit guide, push one PR and inspect required Linux CI before merge/deploy",
+  "next_action": "Run final browser regression and inspect required CI at exact PR head 0dd6866; merge normally if green then deploy and verify actual journey/revision",
   "dirty_files": ["docs/STATUS.md", "docs/RUN-STATE.json"],
   "blocker": null,
-  "updated_at": "2026-11-26T19:07:12.112815+00:00",
-  "integrated_pr": "https://github.com/ITJayasuriya/formpath/pull/13",
-  "merge_commit_sha": "6219821fd87d2b54ad537439e0ed7f6b81fc27a7"
+  "updated_at": "2026-11-26T19:07:51.924849+00:00"
 }

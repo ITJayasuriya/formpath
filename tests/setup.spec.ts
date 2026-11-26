@@ -14,6 +14,10 @@ test("keyboard errors, branch correction, active-only demo receipt", async ({
   page,
 }) => {
   await page.goto("/");
+  await expect(page.getByRole("radio", { name: "Drill" })).toHaveAttribute(
+    "required",
+    "",
+  );
   await continueFlow(page);
   await expect(page.locator("#flow-errors")).toBeFocused();
   await page.getByRole("link", { name: "Equipment: Enter an answer" }).click();

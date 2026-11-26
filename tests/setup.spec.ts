@@ -31,7 +31,9 @@ test("keyboard errors, branch correction, active-only demo receipt", async ({
   await continueFlow(page);
   await enterDates(page);
   await page.getByRole("button", { name: "Change Borrower type" }).click();
-  await expect(page.getByRole("radio", { name: "Individual" })).toBeFocused();
+  await expect(
+    page.getByRole("radio", { name: "Organisation", exact: true }),
+  ).toBeFocused();
   await page.getByRole("radio", { name: "Individual" }).check();
   await expect(page.getByRole("status")).toContainText(
     "Hidden answers are kept",

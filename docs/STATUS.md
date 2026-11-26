@@ -140,3 +140,10 @@ links, heading/exact-field focus, hidden payload exclusion, back retention,
 review date-order recovery and reload-clears-memory. Axe runs on initial mobile,
 error and review states. All four local Chromium/WebKit cases passed; local
 Firefox not run. Linux three-engine CI is required before merge.
+
+Strict review extracted the error-summary pattern and consolidated grouped-field
+focus into one policy. Review edits now focus the selected radio instead of
+always the first radio. Revised regression passes in Chromium/WebKit (four
+cases); check/41 tests/build pass. No casts, new dependencies, generic renderer
+or duplicated validation policy added. Internal patterns use a single-flow DOM
+ID contract; multi-instance IDs/localisation remain release work.

@@ -1,3 +1,4 @@
+import { ErrorSummary } from "../packages/react/src/ErrorSummary";
 import { useState } from "react";
 import { loan } from "../packages/core/fixtures/flows";
 import { prepareSubmission, type ValidationError } from "../packages/core/src";
@@ -80,38 +81,13 @@ export function LoanApp() {
                 </p>
               )}
             </div>
-            {flow.errors.length > 0 && (
-              <div
-                className="error-summary"
-                id="flow-errors"
-                tabIndex={-1}
-                aria-labelledby="error-title"
-              >
-                <h2 id="error-title">There is a problem</h2>
-                <ul>
-                  {flow.errors.map((error) => (
-                    <li key={error.fieldId}>
-                      <a
-                        href={`#field-${error.fieldId}`}
-                        onClick={(event) => {
-                          event.preventDefault();
-                          const target = document.getElementById(
-                            `field-${error.fieldId}`,
-                          );
-                          (target?.matches("fieldset")
-                            ? target.querySelector("input")
-                            : target
-                          )?.focus();
-                        }}
-                      >
-                        {labels[error.fieldId]}:{" "}
-                        {messages[error.translationKey]}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            <ErrorSummary errors={flow.errors}>
+              {(error) => (
+                <>
+                  {labels[error.fieldId]}: {messages[error.translationKey]}
+                </>
+              )}
+            </ErrorSummary>
             {receipt ? (
               <>
                 <p className="notice">

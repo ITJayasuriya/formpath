@@ -1,3 +1,4 @@
+import { focusTarget } from "./focus";
 import { useLayoutEffect, useReducer, useRef } from "react";
 import {
   activePath,
@@ -49,10 +50,7 @@ export function useFlow(definition: FlowDefinition) {
           ? "flow-errors"
           : "flow-heading";
     const target = root.current?.querySelector<HTMLElement>(`[id="${id}"]`);
-    (target?.matches("fieldset")
-      ? target.querySelector<HTMLInputElement>("input")
-      : target
-    )?.focus();
+    focusTarget(target);
   }, [result]);
   return {
     ...result,

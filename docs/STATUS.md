@@ -127,3 +127,10 @@ UI passed check, 41 domain tests/build and four actual loan browser journeys
 (Chromium/WebKit), including axe, exact review focus and mobile date recovery.
 Next: commit the loan consumer and its browser regression coverage, review
 browser-history behavior and open one implementation PR. No deployment yet.
+
+Loan consumer now implements conditional organisation details, native fieldset/
+legend semantics, active-only review, change/confirm and explicit local-only
+receipt. Cream paper, ink and teal tokens follow IMPLEMENTATION; screenshots
+inspected at 1365px and 360px with no clipping. No new dependencies. Browser
+history/deep-link UI, RHF composition and reusable styled/headless patterns are
+still incomplete v1 work; this alpha does not claim them.

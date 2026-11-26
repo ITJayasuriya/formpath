@@ -1,7 +1,7 @@
 # Status
 
-Stage: internal M1 core alpha; no working product UI or published package yet.
-Delivery window: 25 November 2026–5 January 2027. Day 2 of 42.
+Stage: internal memory-only loan UI alpha; package publication and full v1 remain incomplete.
+Delivery window: 25 November 2026–5 January 2027. Day 3 of 42.
 
 ## 25 November — delivered
 
@@ -147,3 +147,9 @@ always the first radio. Revised regression passes in Chromium/WebKit (four
 cases); check/41 tests/build pass. No casts, new dependencies, generic renderer
 or duplicated validation policy added. Internal patterns use a single-flow DOM
 ID contract; multi-instance IDs/localisation remain release work.
+
+Alpha integration/reproduction guide added; README now describes actual product
+behavior and installs both browsers needed by the local command. Build embeds
+its actual Git revision in the footer for deployment verification. Final planned
+unit is the integration/evidence guide. Remaining mandatory scope above remains
+open; no npm publication or pilot validation is claimed.

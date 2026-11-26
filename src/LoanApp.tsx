@@ -252,7 +252,9 @@ export function LoanApp() {
         <a href="https://github.com/ITJayasuriya/formpath">
           Source and contribution guide
         </a>
-        <span>FormPath · internal alpha</span>
+        <span data-revision={__BUILD_REVISION__}>
+          FormPath · internal alpha · {__BUILD_REVISION__.slice(0, 7)}
+        </span>
       </footer>
     </>
   );

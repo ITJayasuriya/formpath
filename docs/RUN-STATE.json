@@ -1,33 +1,27 @@
 {
   "schema_version": 1,
-  "local_date": "2026-11-25",
-  "state": "awaiting_ci",
-  "planned_daily_goal": "M0 API decision and M1 core: constrained definitions, active payload, navigation and synthetic loan/volunteer fixtures",
-  "commit_target": 4,
+  "local_date": "2026-11-26",
+  "state": "in_progress",
+  "planned_daily_goal": "Complete date-order step validation and definition-derived answer types with navigation regression coverage",
+  "commit_target": 3,
   "completed_unit_ids": [
-    "definition-boundary",
-    "active-payload",
-    "navigation-fixtures",
-    "api-discovery-review"
+    "step-date-order",
+    "definition-answer-types",
+    "condition-operands-review-regression"
   ],
-  "actual_commit_shas": ["db247b3", "0fa5a1c", "0005e02"],
-  "branch": "feat/core-alpha",
-  "open_pr": "https://github.com/ITJayasuriya/formpath/pull/12",
-  "last_tested_sha": "0005e029405a19c00d38788d7f3953cef44a73df",
+  "actual_commit_shas": ["a95b70a", "c9f6573"],
+  "branch": "feat/core-validation-types",
+  "open_pr": null,
+  "last_tested_sha": null,
   "actual_test_results": [
-    "npm run check passed",
-    "21 domain tests passed",
-    "npm run build passed",
-    "2 local Chromium/WebKit setup smoke/axe tests passed",
-    "Live setup marker verified in Chromium; no deployment"
+    "check passed including compile-time assertions",
+    "41 domain tests passed",
+    "build passed",
+    "2 local Chromium/WebKit setup smoke/axe tests passed after sandbox port-bind escalation",
+    "Existing live setup page verified desktop/mobile; no deployment"
   ],
-  "next_action": "Push documentation commit; verify required Linux quality check on final head, merge without bypass if green; then finalize local checkpoint",
-  "dirty_files": [
-    "docs/STATUS.md",
-    "docs/RUN-STATE.json",
-    "docs/decisions/001-core-alpha.md",
-    "docs/research/2026-11-25-discovery.md"
-  ],
+  "next_action": "Commit semantic condition boundary, review regression and API record; push one PR and inspect required Linux CI",
+  "dirty_files": ["docs/STATUS.md", "docs/RUN-STATE.json"],
   "blocker": null,
-  "updated_at": "2026-11-25T11:54:02.263226+00:00"
+  "updated_at": "2026-11-26T16:36:36.527715+00:00"
 }

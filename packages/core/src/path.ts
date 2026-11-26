@@ -57,7 +57,7 @@ export function activePath(flow: FlowDefinition, answers: Answers) {
 export type ValidationError = {
   stepId: string;
   fieldId: string;
-  translationKey: "required" | "invalid";
+  translationKey: "required" | "invalid" | "dateOrder";
 };
 const dateOnly = z.iso.date();
 function valid(field: Field, value: unknown): boolean {
@@ -87,8 +87,8 @@ export function validate(
 ): ValidationError[] {
   return activePath(flow, answers)
     .steps.filter((step) => !stepId || step.id === stepId)
-    .flatMap((step) =>
-      step.fields.flatMap<ValidationError>((field) => {
+    .flatMap((step) => {
+      const errors = step.fields.flatMap<ValidationError>((field) => {
         const value = Object.hasOwn(answers, field.id)
           ? answers[field.id]
           : undefined;
@@ -115,8 +115,33 @@ export function validate(
                 translationKey: "invalid" as const,
               },
             ];
-      }),
-    );
+      });
+      const activeIds = new Set(step.fields.map((field) => field.id));
+      for (const rule of step.rules) {
+        const start = Object.hasOwn(answers, rule.startField)
+          ? answers[rule.startField]
+          : undefined;
+        const end = Object.hasOwn(answers, rule.endField)
+          ? answers[rule.endField]
+          : undefined;
+        if (
+          activeIds.has(rule.startField) &&
+          activeIds.has(rule.endField) &&
+          typeof start === "string" &&
+          typeof end === "string" &&
+          dateOnly.safeParse(start).success &&
+          dateOnly.safeParse(end).success &&
+          end < start
+        ) {
+          errors.push({
+            stepId: step.id,
+            fieldId: rule.endField,
+            translationKey: "dateOrder",
+          });
+        }
+      }
+      return errors;
+    });
 }
 
 /** Call immediately before handing a payload to an application-owned adapter. */

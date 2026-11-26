@@ -56,3 +56,62 @@ describe("definition boundary", () => {
     ).toThrow();
   });
 });
+
+describe("condition operand compatibility", () => {
+  it.each([
+    [{ kind: "boolean" }, "true"],
+    [{ kind: "text" }, false],
+    [{ kind: "date" }, "2027-02-29"],
+    [{ kind: "choice", options: ["yes"] }, "no"],
+    [{ kind: "multiChoice", options: ["yes"] }, "yes"],
+  ])("rejects impossible scalar comparisons %j", (shape, value) => {
+    expect(() =>
+      parseDefinition({
+        id: "test",
+        version: 1,
+        steps: [
+          {
+            id: "first",
+            title: "First",
+            fields: [{ id: "value", label: "Value", ...shape }],
+          },
+          {
+            id: "last",
+            title: "Last",
+            visibleWhen: {
+              op: "not",
+              condition: { op: "oneOf", field: "value", values: [value] },
+            },
+            fields: [{ id: "note", label: "Note", kind: "text" }],
+          },
+        ],
+      }),
+    ).toThrow("Condition values do not match field");
+  });
+  it.each([
+    [{ kind: "boolean" }, false],
+    [{ kind: "text" }, "example"],
+    [{ kind: "date" }, "2028-02-29"],
+    [{ kind: "choice", options: ["yes"] }, "yes"],
+  ])("accepts compatible comparison %j", (shape, value) => {
+    expect(() =>
+      parseDefinition({
+        id: "test",
+        version: 1,
+        steps: [
+          {
+            id: "first",
+            title: "First",
+            fields: [{ id: "value", label: "Value", ...shape }],
+          },
+          {
+            id: "last",
+            title: "Last",
+            visibleWhen: { op: "equals", field: "value", value },
+            fields: [{ id: "note", label: "Note", kind: "text" }],
+          },
+        ],
+      }),
+    ).not.toThrow();
+  });
+});

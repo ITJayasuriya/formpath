@@ -1,7 +1,7 @@
-import { parseDefinition } from "../src/definition";
+import { defineFlow, type AnswersFor } from "../src/definition";
 
 // Entirely synthetic scenarios; no personal information or real organisation.
-export const loan = parseDefinition({
+export const loan = defineFlow({
   id: "equipment-loan",
   version: 1,
   steps: [
@@ -47,6 +47,9 @@ export const loan = parseDefinition({
     {
       id: "dates",
       title: "Requested dates",
+      rules: [
+        { kind: "dateOrder", startField: "startDate", endField: "endDate" },
+      ],
       fields: [
         { id: "startDate", label: "Start date", kind: "date", required: true },
         { id: "endDate", label: "End date", kind: "date", required: true },
@@ -60,9 +63,9 @@ export const loanAnswers = {
   organisationName: "Synthetic workshop",
   startDate: "2026-12-01",
   endDate: "2026-12-03",
-};
+} satisfies AnswersFor<typeof loan>;
 
-export const volunteer = parseDefinition({
+export const volunteer = defineFlow({
   id: "volunteer",
   version: 1,
   steps: [

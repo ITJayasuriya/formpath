@@ -86,3 +86,10 @@ JSON formatting only; rerun after formatting before commit. Next: literal
 schema factory and inferred answers, then regression/documentation review.
 PR triage: #3 TypeScript 7 cannot install (typescript-eslint requires <6.1).
 #1/#2 are optional major Actions updates, deferred rather than merged on old CI.
+
+Definition typing unit: `defineFlow` preserves literal IDs/choice options while
+running the same runtime parser; `AnswersFor` models partial drafts, booleans
+and multi-choice values. Both real synthetic fixtures now use this factory.
+Check (including positive/negative compile-time assertions), 31 tests and build
+passed. Date-order unit committed as `a95b70a`. Next: review correction and
+bounded branch journey regression coverage, API examples, strict self-review.

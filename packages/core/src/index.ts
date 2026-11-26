@@ -1,7 +1,8 @@
-export { parseDefinition } from "./definition";
+export { parseDefinition, defineFlow } from "./definition";
 export type {
   Answer,
   Answers,
+  AnswersFor,
   Condition,
   Field,
   Step,

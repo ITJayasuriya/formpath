@@ -4,16 +4,18 @@
   "state": "in_progress",
   "planned_daily_goal": "Complete date-order step validation and definition-derived answer types with navigation regression coverage",
   "commit_target": 3,
-  "completed_unit_ids": ["step-date-order"],
-  "actual_commit_shas": [],
+  "completed_unit_ids": ["step-date-order", "definition-answer-types"],
+  "actual_commit_shas": ["a95b70a"],
   "branch": "feat/core-validation-types",
   "open_pr": null,
   "last_tested_sha": "28b7539ff3ca1572994edb1c13332f94e7b3adae",
   "actual_test_results": [
-    "29 domain tests passed; build passed; check requires checkpoint formatting"
+    "check passed (includes compile-time assertions)",
+    "31 domain tests passed",
+    "build passed"
   ],
-  "next_action": "Commit tested date-order unit, then add validated literal definition factory and inferred answer types",
+  "next_action": "Commit inferred definition types, then cover review correction and deterministic branch journeys; strict review before PR",
   "dirty_files": ["docs/STATUS.md", "docs/RUN-STATE.json"],
   "blocker": null,
-  "updated_at": "2026-11-26T16:33:42.876455+00:00"
+  "updated_at": "2026-11-26T16:34:49.265072+00:00"
 }

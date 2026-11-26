@@ -127,3 +127,40 @@ export function parseDefinition(input: unknown): FlowDefinition {
   }
   return flow;
 }
+
+type DefinedField<F> =
+  F extends z.input<typeof fieldSchema> ? F & { required: boolean } : never;
+type DefinedStep<S> =
+  S extends z.input<typeof stepSchema>
+    ? Omit<S, "fields" | "rules"> & {
+        fields: DefinedField<S["fields"][number]>[];
+        rules: Step["rules"];
+      }
+    : never;
+type DefinedFlow<T extends z.input<typeof definitionSchema>> = Omit<
+  T,
+  "steps"
+> & {
+  steps: DefinedStep<T["steps"][number]>[];
+};
+
+/** Preserve literal IDs/options for authored flows; unknown data uses parseDefinition. */
+export function defineFlow<const T extends z.input<typeof definitionSchema>>(
+  input: T,
+): DefinedFlow<T>;
+export function defineFlow(input: unknown): FlowDefinition {
+  return parseDefinition(input);
+}
+
+type ValueFor<F extends Field> = F extends { kind: "boolean" }
+  ? boolean
+  : F extends { kind: "choice"; options: (infer O extends string)[] }
+    ? O
+    : F extends { kind: "multiChoice"; options: (infer O extends string)[] }
+      ? O[]
+      : string;
+
+/** Drafts are partial: required fields may be unanswered or on a hidden branch. */
+export type AnswersFor<D extends FlowDefinition> = {
+  [F in D["steps"][number]["fields"][number] as F["id"]]?: ValueFor<F>;
+};

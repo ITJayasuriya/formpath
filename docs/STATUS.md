@@ -159,3 +159,12 @@ radio/text/date controls now expose their required state while form `noValidate`
 keeps the core error-summary policy in charge. Added the browser assertion.
 This necessary correction is a sixth commit beyond the target of five; no
 padding work was added. Required CI must use this corrected head.
+
+Required Linux CI run 45881417690 failed twice at reviewed head 4051360: both
+Firefox pages crashed (review axe evaluation and date-input fill); all four
+Chromium/WebKit cases passed, as did check/41 tests/build. Added browser-process
+diagnostics to CI without removing tests or changing required protections.
+No merge/deployment until the actual cause is resolved and required CI passes.
+Production-build loaded-page offline journey passed locally; 200% text at 360px
+had no horizontal overflow, and emulated forced-colors error screenshot was
+inspected (not a Windows high-contrast/manual screen-reader claim).

@@ -76,16 +76,44 @@ export type Field = z.infer<typeof fieldSchema>;
 export type Step = z.infer<typeof stepSchema>;
 export type FlowDefinition = z.infer<typeof definitionSchema>;
 
-function references(condition: Condition): string[] {
+function validateCondition(
+  condition: Condition,
+  earlierFields: Map<string, Field>,
+): void {
   switch (condition.op) {
-    case "equals":
-    case "oneOf":
-      return [condition.field];
     case "not":
-      return references(condition.condition);
+      return validateCondition(condition.condition, earlierFields);
     case "all":
     case "any":
-      return condition.conditions.flatMap(references);
+      for (const child of condition.conditions)
+        validateCondition(child, earlierFields);
+      return;
+    case "equals":
+    case "oneOf": {
+      const field = earlierFields.get(condition.field);
+      if (!field)
+        throw new Error(
+          `Condition must reference earlier fields: ${condition.field}`,
+        );
+      const values =
+        condition.op === "equals" ? [condition.value] : condition.values;
+      const compatible = values.every((value) => {
+        switch (field.kind) {
+          case "boolean":
+            return typeof value === "boolean";
+          case "text":
+            return typeof value === "string";
+          case "date":
+            return z.iso.date().safeParse(value).success;
+          case "choice":
+            return typeof value === "string" && field.options.includes(value);
+          case "multiChoice":
+            return false;
+        }
+      });
+      if (!compatible)
+        throw new Error(`Condition values do not match field: ${field.id}`);
+    }
   }
 }
 
@@ -93,7 +121,7 @@ function references(condition: Condition): string[] {
 export function parseDefinition(input: unknown): FlowDefinition {
   const flow = definitionSchema.parse(input);
   const steps = new Set<string>();
-  const fields = new Set<string>();
+  const fields = new Map<string, Field>();
   for (const step of flow.steps) {
     if (steps.has(step.id)) throw new Error(`Duplicate step: ${step.id}`);
     steps.add(step.id);
@@ -101,11 +129,7 @@ export function parseDefinition(input: unknown): FlowDefinition {
       step.visibleWhen,
       ...step.fields.map((f) => f.visibleWhen),
     ]) {
-      if (condition && references(condition).some((ref) => !fields.has(ref))) {
-        throw new Error(
-          `Condition in ${step.id} must reference earlier fields`,
-        );
-      }
+      if (condition) validateCondition(condition, fields);
     }
     for (const rule of step.rules) {
       const start = step.fields.find((field) => field.id === rule.startField);
@@ -122,7 +146,7 @@ export function parseDefinition(input: unknown): FlowDefinition {
     }
     for (const field of step.fields) {
       if (fields.has(field.id)) throw new Error(`Duplicate field: ${field.id}`);
-      fields.add(field.id);
+      fields.set(field.id, field);
     }
   }
   return flow;

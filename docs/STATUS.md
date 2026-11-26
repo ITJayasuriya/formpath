@@ -73,23 +73,35 @@ validated demand or closing issue #4. Issues #5–#7 remain broader incomplete
 milestones. No credentials or service access block current implementation.
 First npm publication/trusted-publisher binding may later require owner action.
 
-## 26 November — core validation in progress
+## 26 November — core validation and types
 
-Daily target: three coherent commits. Same implementation branch throughout:
-`feat/core-validation-types`. Added constrained same-step date-order rules to
-parsed definitions and the loan fixture. Active validation, guarded navigation
-and final submission use the same rule, with same-day loans permitted. Missing,
-invalid and hidden dates retain existing field/visibility policies.
+Daily target: three coherent commits, retained for any recovery run. Branch:
+`feat/core-validation-types`. Units: `a95b70a` date-range rules; `c9f6573`
+authored definitions/answer inference; third unit adds semantic condition
+validation and review-date correction coverage. No working product UI yet.
 
-Working tree: 29 domain tests and build passed. Check initially found checkpoint
-JSON formatting only; rerun after formatting before commit. Next: literal
-schema factory and inferred answers, then regression/documentation review.
+- Same-step date-order rules validate references at load time; active validation,
+  navigation and submission share one rule. Same-day ranges pass; missing,
+  malformed and hidden dates follow existing field policy.
+- `defineFlow` validates authored definitions while preserving literal IDs/options;
+  `AnswersFor` infers partial drafts, choice unions, boolean and multi-choice types.
+- Impossible condition operands now fail at load time, including unsupported
+  scalar comparisons against array answers. No silent unreachable branch.
+- Date correction from review blocks on invalid order and returns to review after
+  correction, retaining hidden draft answers while excluding them from submission.
+
+Verification on the third unit working tree: check (including positive/negative
+compile-time assertions), 41 domain tests and build passed. Local Chromium/WebKit
+setup smoke/axe: 2 passed after the initial sandbox EPERM bind failure. These
+browser tests cover the setup page only. Linux three-engine CI will run on the PR.
+Existing live setup page inspected in Chromium at desktop and 360px; no deployment
+because no browser feature changed. No local Firefox/manual screen-reader or
+performance claim. Strict review recorded in decisions/002: one condition
+traversal replaces reference flattening, core owns all validation, no casts or
+new dependencies. No unresolved structural finding.
+
 PR triage: #3 TypeScript 7 cannot install (typescript-eslint requires <6.1).
-#1/#2 are optional major Actions updates, deferred rather than merged on old CI.
-
-Definition typing unit: `defineFlow` preserves literal IDs/choice options while
-running the same runtime parser; `AnswersFor` models partial drafts, booleans
-and multi-choice values. Both real synthetic fixtures now use this factory.
-Check (including positive/negative compile-time assertions), 31 tests and build
-passed. Date-order unit committed as `a95b70a`. Next: review correction and
-bounded branch journey regression coverage, API examples, strict self-review.
+#1/#2 optional major Actions updates are deferred, not merged on old CI.
+Next: integrate this PR after required CI, then React memory-only loan binding
+and accessible UI with actual browser journeys. M1 end-to-end alpha is still
+incomplete. Remaining mandatory v1 scope and discovery gaps above still apply.

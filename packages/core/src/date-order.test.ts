@@ -109,3 +109,36 @@ describe("step date ordering", () => {
     ).toThrow();
   });
 });
+
+it("returns a corrected date edit to review without dropping hidden drafts", () => {
+  const review = {
+    answers: loanAnswers,
+    location: { type: "review" as const },
+  };
+  const edit = transition(loan, review, { type: "edit", fieldId: "endDate" });
+  expect(edit.focus).toEqual({ type: "field", fieldId: "endDate" });
+  const changed = transition(loan, edit.state, {
+    type: "answer",
+    fieldId: "endDate",
+    value: "2026-11-30",
+  });
+  expect(transition(loan, changed.state, { type: "next" }).focus).toEqual({
+    type: "errors",
+  });
+  const fixed = transition(loan, changed.state, {
+    type: "answer",
+    fieldId: "endDate",
+    value: "2026-12-05",
+  });
+  const returned = transition(loan, fixed.state, { type: "next" });
+  expect(returned.state.location).toEqual({ type: "review" });
+  expect(returned.state.answers.organisationName).toBe(
+    loanAnswers.organisationName,
+  );
+  const submission = prepareSubmission(loan, returned.state.answers);
+  expect(submission.status).toBe("valid");
+  expect(
+    submission.status === "valid" &&
+      Object.hasOwn(submission.payload, "organisationName"),
+  ).toBe(false);
+});

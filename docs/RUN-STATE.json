@@ -4,18 +4,24 @@
   "state": "in_progress",
   "planned_daily_goal": "Complete date-order step validation and definition-derived answer types with navigation regression coverage",
   "commit_target": 3,
-  "completed_unit_ids": ["step-date-order", "definition-answer-types"],
-  "actual_commit_shas": ["a95b70a"],
+  "completed_unit_ids": [
+    "step-date-order",
+    "definition-answer-types",
+    "condition-operands-review-regression"
+  ],
+  "actual_commit_shas": ["a95b70a", "c9f6573"],
   "branch": "feat/core-validation-types",
   "open_pr": null,
-  "last_tested_sha": "28b7539ff3ca1572994edb1c13332f94e7b3adae",
+  "last_tested_sha": null,
   "actual_test_results": [
-    "check passed (includes compile-time assertions)",
-    "31 domain tests passed",
-    "build passed"
+    "check passed including compile-time assertions",
+    "41 domain tests passed",
+    "build passed",
+    "2 local Chromium/WebKit setup smoke/axe tests passed after sandbox port-bind escalation",
+    "Existing live setup page verified desktop/mobile; no deployment"
   ],
-  "next_action": "Commit inferred definition types, then cover review correction and deterministic branch journeys; strict review before PR",
+  "next_action": "Commit semantic condition boundary, review regression and API record; push one PR and inspect required Linux CI",
   "dirty_files": ["docs/STATUS.md", "docs/RUN-STATE.json"],
   "blocker": null,
-  "updated_at": "2026-11-26T16:34:49.265072+00:00"
+  "updated_at": "2026-11-26T16:36:36.527715+00:00"
 }

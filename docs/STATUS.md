@@ -134,3 +134,9 @@ receipt. Cream paper, ink and teal tokens follow IMPLEMENTATION; screenshots
 inspected at 1365px and 360px with no clipping. No new dependencies. Browser
 history/deep-link UI, RHF composition and reusable styled/headless patterns are
 still incomplete v1 work; this alpha does not claim them.
+
+Product browser regressions replace the setup smoke test: keyboard error-summary
+links, heading/exact-field focus, hidden payload exclusion, back retention,
+review date-order recovery and reload-clears-memory. Axe runs on initial mobile,
+error and review states. All four local Chromium/WebKit cases passed; local
+Firefox not run. Linux three-engine CI is required before merge.

@@ -105,3 +105,25 @@ PR triage: #3 TypeScript 7 cannot install (typescript-eslint requires <6.1).
 Next: integrate this PR after required CI, then React memory-only loan binding
 and accessible UI with actual browser journeys. M1 end-to-end alpha is still
 incomplete. Remaining mandatory v1 scope and discovery gaps above still apply.
+
+PR: https://github.com/ITJayasuriya/formpath/pull/13. Reviewed/tested head:
+`3d3d5b61fdba42654582e0f34128df1429237814`. Three daily commits completed:
+`a95b70a`, `c9f6573`, `3d3d5b6`. Required Linux CI passed on the reviewed exact head (check, 41 tests, build,
+three browser setup smoke/axe tests):
+https://github.com/ITJayasuriya/formpath/actions/runs/45860441684.
+PR #13 merged normally as `6219821fd87d2b54ad537439e0ed7f6b81fc27a7`.
+Local main synchronized without discarding operational docs; post-merge 41 tests
+and build passed. Day 2 completed; same-date recovery should skip after cheap
+necessary-PR triage. No credential blocker or lost delivery day. Final operational
+outcome updates remain local until the next meaningful implementation commit.
+
+## 27 November — memory-only React loan alpha (in progress)
+
+Daily target: five coherent commits, chosen once. Branch `feat/loan-ui`.
+Added a memory-only React transition binding. Core remains canonical for answers,
+branching and validation; the binding applies focus intentions and revalidates
+errors after progression attempts without moving typing focus. Current working
+UI passed check, 41 domain tests/build and four actual loan browser journeys
+(Chromium/WebKit), including axe, exact review focus and mobile date recovery.
+Next: commit the loan consumer and its browser regression coverage, review
+browser-history behavior and open one implementation PR. No deployment yet.

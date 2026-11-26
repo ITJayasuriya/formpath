@@ -1,27 +1,26 @@
 {
   "schema_version": 1,
-  "local_date": "2026-11-26",
+  "local_date": "2026-11-27",
   "state": "in_progress",
-  "planned_daily_goal": "Complete date-order step validation and definition-derived answer types with navigation regression coverage",
-  "commit_target": 3,
-  "completed_unit_ids": [
-    "step-date-order",
-    "definition-answer-types",
-    "condition-operands-review-regression"
-  ],
-  "actual_commit_shas": ["a95b70a", "c9f6573"],
-  "branch": "feat/core-validation-types",
+  "planned_daily_goal": "Memory-only React loan flow with accessible errors and review correction browser journeys",
+  "commit_target": 5,
+  "completed_unit_ids": ["react-memory-binding"],
+  "actual_commit_shas": [],
+  "branch": "feat/loan-ui",
   "open_pr": null,
-  "last_tested_sha": null,
+  "last_tested_sha": "6219821fd87d2b54ad537439e0ed7f6b81fc27a7",
   "actual_test_results": [
-    "check passed including compile-time assertions",
-    "41 domain tests passed",
-    "build passed",
-    "2 local Chromium/WebKit setup smoke/axe tests passed after sandbox port-bind escalation",
-    "Existing live setup page verified desktop/mobile; no deployment"
+    "Local check including compile-time assertions passed on reviewed PR head 3d3d5b6",
+    "41 domain tests and build passed on PR head and post-merge main 6219821",
+    "2 local Chromium/WebKit setup smoke/axe tests passed; local Firefox not run",
+    "Required Linux quality passed on reviewed exact head 3d3d5b6: check,41 tests,build,3 browser setup smoke/axe tests",
+    "CI: https://github.com/ITJayasuriya/formpath/actions/runs/45860441684",
+    "Live setup marker verified desktop/mobile; no deployment"
   ],
-  "next_action": "Commit semantic condition boundary, review regression and API record; push one PR and inspect required Linux CI",
+  "next_action": "Commit tested React binding, then loan consumer and browser regressions; review history gap before PR",
   "dirty_files": ["docs/STATUS.md", "docs/RUN-STATE.json"],
   "blocker": null,
-  "updated_at": "2026-11-26T16:36:36.527715+00:00"
+  "updated_at": "2026-11-26T19:05:23.755627+00:00",
+  "integrated_pr": "https://github.com/ITJayasuriya/formpath/pull/13",
+  "merge_commit_sha": "6219821fd87d2b54ad537439e0ed7f6b81fc27a7"
 }

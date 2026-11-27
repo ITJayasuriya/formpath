@@ -8,9 +8,10 @@
     "strict-url-boundary",
     "history-binding",
     "history-browser-regressions",
-    "history-server-boundary"
+    "history-server-boundary",
+    "history-integration-guide-review"
   ],
-  "actual_commit_shas": ["d2740dd", "b62fbc9", "cb05a98"],
+  "actual_commit_shas": ["d2740dd", "b62fbc9", "cb05a98", "8526660"],
   "branch": "feat/browser-history",
   "open_pr": null,
   "last_tested_sha": "f95eaa12f8b5fc5c11f3ac379f8b08717d7cfe20",
@@ -18,10 +19,10 @@
     "Working tree: check,49 unit tests,build passed;14 Chromium/WebKit browser cases passed; Linux Firefox pending",
     "cb05a98 + SSR regression: check,50 tests,build passed;14 local Chromium/WebKit browser cases passed before test-only addition"
   ],
-  "next_action": "Commit server boundary regression then document strict review and open PR",
+  "next_action": "Run final check, commit reviewed integration guide, push PR and require green Linux quality before exact-head merge/deploy",
   "dirty_files": ["docs/STATUS.md", "docs/RUN-STATE.json"],
   "blocker": null,
-  "updated_at": "2026-11-27T18:48:52.268567+00:00",
+  "updated_at": "2026-11-27T18:48:52.697749+00:00",
   "integrated_pr": "https://github.com/ITJayasuriya/formpath/pull/14",
   "merge_sha": "f95eaa12f8b5fc5c11f3ac379f8b08717d7cfe20"
 }

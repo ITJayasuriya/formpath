@@ -29,9 +29,10 @@ submission exists. A reload clears everything, including the demo receipt.
 
 ## Reproduce the evidence
 
-`npm run check`, `npm test` and `npm run build` cover types/lint/format, 41 core
-cases and a production bundle. `npm run test:e2e:local` runs two product journeys
-in Chromium and WebKit. Linux CI runs both journeys in Firefox too. This is
+`npm run check`, `npm test` and `npm run build` cover types/lint/format, 50 core/route/server-boundary
+cases and a production bundle. `npm run test:e2e:local` runs five product journeys
+and two upstream browser probes in Chromium and WebKit (14 cases). Linux CI
+runs all seven in Firefox too (21 cases). This is
 product behavior coverage, replacing the original setup-page smoke test.
 
 The keyboard journey triggers validation, follows an error link to its radio,
@@ -39,8 +40,9 @@ continues with Space, completes the organisation branch, edits borrower type
 from review and checks hidden payload exclusion. The mobile journey checks
 back retention, date-order errors, `aria-invalid`, exact-field review focus and
 return to review after correction. Axe examines initial, error and review states.
-A reload test verifies the memory-only promise. Manual screen-reader testing,
-forced-colors and offline browser behavior have not yet been verified.
+A reload test verifies the memory-only promise. Manual screen-reader testing remains unverified. Loaded-page offline navigation
+and forced-colors emulation were inspected; this is not native high-contrast
+or assistive-technology validation.
 
 Desktop (1365px) and mobile (360px) screenshots were inspected on macOS Chromium.
 Body/control text is at least 16px, body line-height 1.6, headings 1.25 and text
@@ -56,9 +58,33 @@ policy. No new dependency, cast-heavy adapter or input abstraction was needed.
 The UI follows the existing paper/ink/teal direction; review change controls and
 error links make exact-answer correction visible.
 
-This is not v1. Next work includes browser back/deep-link routing, multi-instance
+This is not v1. Next work includes multi-instance
 IDs and localisation, RHF composition, opt-in drafts/migrations/multi-tab conflicts,
 idempotent submission/unknown outcomes, workspace exports/packed consumers,
 Next.js SSR/hydration, secure Storybook and complete accessible styled/headless
 patterns. See IMPLEMENTATION and STATUS for the full mandatory scope. External
 pilot and reviewed Sinhala evidence are still absent; no interviews are claimed.
+
+## Opt-in browser history
+
+Call `useFlowHistory(definition, flow)` alongside `useFlow`. Attach one flow per
+page and keep its definition stable for that mount. The memory hook still works
+without URL integration. Both hooks render a deterministic empty server snapshot;
+browser URL reads and writes happen after hydration. The Node regression verifies
+that boundary; the real Next.js SSR/hydration consumer remains required work.
+
+The static Pages demo uses `#/apply/equipment-loan/step/equipment` and
+`#/apply/equipment-loan/review`; no server rewrite or Next.js server is implied.
+Routes contain IDs only. Neither answers nor edit-return intent enter the URL or
+history state. Review change buttons preserve exact-field focus and return intent
+within that visit; browser Back/Forward restores the step with heading focus,
+without restoring stale edit intent.
+
+Every incoming hash passes through core `open`. Missing prerequisites recover to
+the first invalid step; unknown/hidden step IDs use the core safe fallback. A
+recovery notice explains the change and the rejected history entry is replaced,
+so Back does not create a redirect loop. In-app route changes push a new entry;
+answer edits and failed validation do not. A branch that becomes visible again
+retains its in-memory answers. Reload clears them and rechecks the requested URL.
+Receipt URLs are rejected: a local demo receipt exists only after explicit user
+action, and browser traversal clears it. Browser history never proves submission.

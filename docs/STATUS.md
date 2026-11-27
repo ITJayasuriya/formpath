@@ -282,3 +282,10 @@ Server-render boundary regression passes in Node with no `window`: the opt-in
 history hook produces the same deterministic empty snapshot on repeated renders.
 This does not claim Next.js integration/hydration completion. Current check,
 50 unit/boundary tests and build pass; browser-tested implementation unchanged.
+
+Strict review recorded in decisions/004: reused core guard instead of duplicating
+prerequisite policy, fixed StrictMode initial synchronization and used canonical
+initialState for empty definitions. No new dependencies/casts or structural
+findings remain. Integration guide documents static routing, transient review
+intent, receipt invalidation and exact reproduction/verification limits. Required
+Linux CI and checked-main deployment are next; full v1 is still incomplete.

@@ -1,7 +1,7 @@
 # Status
 
-Stage: internal M1 core alpha; no working product UI or published package yet.
-Delivery window: 25 November 2026–5 January 2027. Day 2 of 42.
+Stage: internal memory-only loan UI alpha; package publication and full v1 remain incomplete.
+Delivery window: 25 November 2026–5 January 2027. Day 3 of 42.
 
 ## 25 November — delivered
 
@@ -105,3 +105,114 @@ PR triage: #3 TypeScript 7 cannot install (typescript-eslint requires <6.1).
 Next: integrate this PR after required CI, then React memory-only loan binding
 and accessible UI with actual browser journeys. M1 end-to-end alpha is still
 incomplete. Remaining mandatory v1 scope and discovery gaps above still apply.
+
+PR: https://github.com/ITJayasuriya/formpath/pull/13. Reviewed/tested head:
+`3d3d5b61fdba42654582e0f34128df1429237814`. Three daily commits completed:
+`a95b70a`, `c9f6573`, `3d3d5b6`. Required Linux CI passed on the reviewed exact head (check, 41 tests, build,
+three browser setup smoke/axe tests):
+https://github.com/ITJayasuriya/formpath/actions/runs/45860441684.
+PR #13 merged normally as `6219821fd87d2b54ad537439e0ed7f6b81fc27a7`.
+Local main synchronized without discarding operational docs; post-merge 41 tests
+and build passed. Day 2 completed; same-date recovery should skip after cheap
+necessary-PR triage. No credential blocker or lost delivery day. Final operational
+outcome updates remain local until the next meaningful implementation commit.
+
+## 27 November — memory-only React loan alpha (in progress)
+
+Daily target: five coherent commits, chosen once. Branch `feat/loan-ui`.
+Added a memory-only React transition binding. Core remains canonical for answers,
+branching and validation; the binding applies focus intentions and revalidates
+errors after progression attempts without moving typing focus. Current working
+UI passed check, 41 domain tests/build and four actual loan browser journeys
+(Chromium/WebKit), including axe, exact review focus and mobile date recovery.
+Next: commit the loan consumer and its browser regression coverage, review
+browser-history behavior and open one implementation PR. No deployment yet.
+
+Loan consumer now implements conditional organisation details, native fieldset/
+legend semantics, active-only review, change/confirm and explicit local-only
+receipt. Cream paper, ink and teal tokens follow IMPLEMENTATION; screenshots
+inspected at 1365px and 360px with no clipping. No new dependencies. Browser
+history/deep-link UI, RHF composition and reusable styled/headless patterns are
+still incomplete v1 work; this alpha does not claim them.
+
+Product browser regressions replace the setup smoke test: keyboard error-summary
+links, heading/exact-field focus, hidden payload exclusion, back retention,
+review date-order recovery and reload-clears-memory. Axe runs on initial mobile,
+error and review states. All four local Chromium/WebKit cases passed; local
+Firefox not run. Linux three-engine CI is required before merge.
+
+Strict review extracted the error-summary pattern and consolidated grouped-field
+focus into one policy. Review edits now focus the selected radio instead of
+always the first radio. Revised regression passes in Chromium/WebKit (four
+cases); check/41 tests/build pass. No casts, new dependencies, generic renderer
+or duplicated validation policy added. Internal patterns use a single-flow DOM
+ID contract; multi-instance IDs/localisation remain release work.
+
+Alpha integration/reproduction guide added; README now describes actual product
+behavior and installs both browsers needed by the local command. Build embeds
+its actual Git revision in the footer for deployment verification. Final planned
+unit is the integration/evidence guide. Remaining mandatory scope above remains
+open; no npm publication or pilot validation is claimed.
+
+Final accessibility review found missing native required semantics. Required
+radio/text/date controls now expose their required state while form `noValidate`
+keeps the core error-summary policy in charge. Added the browser assertion.
+This necessary correction is a sixth commit beyond the target of five; no
+padding work was added. Required CI must use this corrected head.
+
+Required Linux CI run 45881417690 failed twice at reviewed head 4051360: both
+Firefox pages crashed (review axe evaluation and date-input fill); all four
+Chromium/WebKit cases passed, as did check/41 tests/build. Added browser-process
+diagnostics to CI without removing tests or changing required protections.
+No merge/deployment until the actual cause is resolved and required CI passes.
+Production-build loaded-page offline journey passed locally; 200% text at 360px
+had no horizontal overflow, and emulated forced-colors error screenshot was
+inspected (not a Windows high-contrast/manual screen-reader claim).
+
+### Run outcome — 27 November
+
+Seven actual commits (target five; two required accessibility/CI corrections):
+`e4c59b2`, `ea49589`, `a845cc8`, `ded3378`, `0dd6866`, `4051360`, `1d85ace`.
+PR https://github.com/ITJayasuriya/formpath/pull/14 remains open on
+`1d85acece8ccbd362f91058b37db7892468521b9`.
+
+Required Linux diagnostic CI failed:
+https://github.com/ITJayasuriya/formpath/actions/runs/45882023712.
+Check/41 core tests/build and four Chromium/WebKit product cases passed there;
+two Firefox cases crashed. Process diagnostics show Firefox content processes
+exiting on signal 11, not an assertion failure. The cause is NOT yet established;
+the namespace EPERM warning alone is not proof of cause. Earlier CI attempt and
+one bounded retry at 4051360 failed at the same two operations. No further blind
+retries, test skips, weakened protection, merge or deployment were performed.
+
+Last local product-tested code: 4051360 (check, 41 tests, build and four browser
+cases). Head 1d85ace changes only CI diagnostics/status and passed local check;
+its CI confirms the same passing non-Firefox checks. Current deployed site is
+still the setup marker, verified before work. No release/package publication.
+Final operational checkpoint/status changes remain local for recovery.
+
+Next concrete action: on this same branch/PR, add minimal Linux Firefox probes
+for native required date-input fill and axe on static markup, compare their
+content-process failures with the loan journey, then fix the established cause.
+Keep all six required product cases. Review and rerun required CI on the final
+head, merge normally only when green, then build/deploy checked main and verify
+the full hosted journey plus footer revision. Today's implementation is useful
+but daily integration is unfinished; retain the selected target and seven commits
+on same-date recovery. No full delivery day has been marked completed and the
+5 January deadline is unchanged. No owner credential/action is needed now.
+
+### 27 November recovery — isolate browser regression
+
+Resumed PR #14, retaining target five and all seven prior commits. Upstream
+Playwright #44135 matches the axe/label/ARIA reflection crash in Firefox build 1572. Added independent static named-region/axe/date probe and a native required
+date control without axe; all product tests remain. First run tests the existing
+pin to establish the local CI reproduction before selecting a compatible stable
+version. No product markup changes, skips or protection changes.
+
+Linux run 46029891689 at 1d65dd1 reproduced the static axe/label crash with
+Playwright 1.65.1, while the native required-date control passed. Nine cases
+passed; three Firefox cases crashed (static reproduction and both product
+journeys). This isolates the upstream regression without changing the UI.
+Pinned stable runner and axe peer to 1.64.1; local check, 41 core tests, build,
+eight Chromium/WebKit cases passed. npm audit: zero advisories. Required Linux
+CI on the new pin is next. Decision 003 records compatibility and upgrade gate.

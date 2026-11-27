@@ -1,46 +1,28 @@
 {
   "schema_version": 1,
-  "local_date": "2026-11-27",
-  "state": "awaiting_ci",
-  "planned_daily_goal": "Memory-only React loan flow with accessible errors and review correction browser journeys",
+  "local_date": "2026-11-28",
+  "state": "in_progress",
+  "planned_daily_goal": "Guarded browser history and deep-link recovery with retained memory answers",
   "commit_target": 5,
   "completed_unit_ids": [
-    "react-memory-binding",
-    "loan-consumer",
-    "browser-regressions",
-    "accessible-error-pattern",
-    "integration-evidence-guide"
+    "strict-url-boundary",
+    "history-binding",
+    "history-browser-regressions",
+    "history-server-boundary",
+    "history-integration-guide-review"
   ],
-  "actual_commit_shas": [
-    "e4c59b2",
-    "ea49589",
-    "a845cc8",
-    "ded3378",
-    "0dd6866",
-    "4051360",
-    "1d85ace",
-    "1d65dd1"
-  ],
-  "branch": "feat/loan-ui",
-  "open_pr": "https://github.com/ITJayasuriya/formpath/pull/14",
-  "last_tested_sha": "1d85acece8ccbd362f91058b37db7892468521b9",
+  "actual_commit_shas": ["d2740dd", "b62fbc9", "cb05a98", "8526660"],
+  "branch": "feat/browser-history",
+  "open_pr": null,
+  "last_tested_sha": "f95eaa12f8b5fc5c11f3ac379f8b08717d7cfe20",
   "actual_test_results": [
-    "Local 4051360: check,41 core tests,build,4 Chromium/WebKit product tests passed; local Firefox not run",
-    "CI head 1d85ace run 45882023712: check,41 tests,build,4 Chromium/WebKit passed; 2 Firefox cases crashed with content-process signal 11",
-    "CI 4051360 run 45881417690 attempts 1 and 2 also failed Firefox Page crashed",
-    "Desktop/360px screenshots inspected; loaded-page offline receipt passed; 200% text no horizontal overflow; forced-colors emulation inspected",
-    "No deployment; live site remains setup marker; no npm publication",
-    "Recovery 1d65dd1 CI46029891689: static axe/label Firefox crash reproduced, native date control passed; 9 passed /3 Firefox crashes.",
-    "Stable1.64.1 working tree: check,41 tests,build,8 Chromium/WebKit passed; audit0 advisories; Linux pending."
+    "Working tree: check,49 unit tests,build passed;14 Chromium/WebKit browser cases passed; Linux Firefox pending",
+    "cb05a98 + SSR regression: check,50 tests,build passed;14 local Chromium/WebKit browser cases passed before test-only addition"
   ],
-  "next_action": "Push stable Playwright runner/peer pin and inspect required Linux CI at new exact head; merge PR14 only if reviewed head is green, then build/deploy main and verify live journeys/revision.",
-  "dirty_files": [
-    "package.json",
-    "package-lock.json",
-    "docs/decisions/003-firefox-test-pin.md",
-    "docs/STATUS.md",
-    "docs/RUN-STATE.json"
-  ],
+  "next_action": "Run final check, commit reviewed integration guide, push PR and require green Linux quality before exact-head merge/deploy",
+  "dirty_files": ["docs/STATUS.md", "docs/RUN-STATE.json"],
   "blocker": null,
-  "updated_at": "2026-11-27T16:03:06.482242+00:00"
+  "updated_at": "2026-11-27T18:48:52.697749+00:00",
+  "integrated_pr": "https://github.com/ITJayasuriya/formpath/pull/14",
+  "merge_sha": "f95eaa12f8b5fc5c11f3ac379f8b08717d7cfe20"
 }

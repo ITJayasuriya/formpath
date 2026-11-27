@@ -1,5 +1,7 @@
 import { ErrorSummary } from "../packages/react/src/ErrorSummary";
 import { useState } from "react";
+import type { FlowState } from "../packages/core/src";
+import { useFlowHistory } from "../packages/react/src/useFlowHistory";
 import { loan } from "../packages/core/fixtures/flows";
 import { prepareSubmission, type ValidationError } from "../packages/core/src";
 import { useFlow } from "../packages/react/src/useFlow";
@@ -17,7 +19,9 @@ const labels = Object.fromEntries(
 
 export function LoanApp() {
   const flow = useFlow(loan);
-  const [receipt, setReceipt] = useState(false);
+  const recovered = useFlowHistory(loan, flow);
+  const [receiptState, setReceiptState] = useState<FlowState | null>(null);
+  const receipt = receiptState === flow.state;
   const { state, dispatch, path } = flow;
   const current = state.location;
   const step =
@@ -74,6 +78,13 @@ export function LoanApp() {
               Memory only — reloading clears your answers.
             </p>
             <div role="status">
+              {recovered && (
+                <p className="notice">
+                  That page is unavailable for your current answers. We’ve
+                  opened a safe step. Complete earlier questions before
+                  continuing.
+                </p>
+              )}
               {flow.hiddenFieldIds.length > 0 && (
                 <p className="notice">
                   Your branch changed. Hidden answers are kept for this visit
@@ -228,7 +239,7 @@ export function LoanApp() {
                         prepareSubmission(loan, state.answers).status ===
                         "valid"
                       ) {
-                        setReceipt(true);
+                        setReceiptState(state);
                         requestAnimationFrame(() =>
                           document.getElementById("flow-heading")?.focus(),
                         );

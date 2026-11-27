@@ -216,3 +216,76 @@ journeys). This isolates the upstream regression without changing the UI.
 Pinned stable runner and axe peer to 1.64.1; local check, 41 core tests, build,
 eight Chromium/WebKit cases passed. npm audit: zero advisories. Required Linux
 CI on the new pin is next. Decision 003 records compatibility and upgrade gate.
+
+### Recovery outcome — 27 November completed and deployed
+
+Two recovery commits: `1d65dd1` isolates the upstream Firefox crash;
+`c5b7cd1` pins compatible stable Playwright runner/axe peer and documents the
+upgrade gate. Nine implementation commits today against the retained target of
+five; additional commits fixed required semantics and the actual CI blocker,
+not a new daily goal. Strict review resolved the dependency/type mismatch with
+an explicit matching peer pin; no production workaround or skipped test.
+
+Required Linux CI passed on reviewed head `c5b7cd14f95eb0a2755d269478ef320014c31030`:
+https://github.com/ITJayasuriya/formpath/actions/runs/46030310618 — check, 41 core
+tests, build, all 12 Chromium/Firefox/WebKit cases. PR #14 was normally squash
+merged with the exact-head guard as `f95eaa12f8b5fc5c11f3ac379f8b08717d7cfe20`.
+Local main safely synchronized; 41 tests/build passed again. The redundant
+push-to-main CI run 46030831733 was queued at final inspection, not claimed green.
+
+Deployed that build once to the existing Pages project (deployment `e6e76639`).
+https://isuru-formpath.pages.dev now serves the loan alpha, replacing the setup
+marker. Production footer verified against full merge SHA. Both actual product
+journeys passed in Chromium/WebKit (four cases), including desktop/mobile axe,
+error focus, conditional payload exclusion, review/date correction and reload.
+Production desktop/360px error screenshots inspected; no clipping, 16px controls,
+visible error focus. Local and hosted Firefox/manual screen-reader checks were
+not run; required Linux Firefox passed. No npm publication or real submission.
+
+The day's concrete memory-only goal is now integrated and verified. No lost
+whole delivery day or owner action; the original deadline remains 5 January.
+Next: browser-history/deep-link recovery with meaningful browser regressions,
+then RHF composition and workspace exports before the second Next.js consumer.
+All remaining v1 scope and external validation gaps listed above remain open.
+No whole-project weekly audit is claimed on day 3. Final operational STATUS and
+RUN-STATE updates remain local for the next meaningful implementation commit;
+no product code is dirty. The completed-day duplicate check must use PR #14's
+merged evidence, retain target five and avoid another deployment.
+
+## 28 November — guarded browser history
+
+Day 4; daily target five, chosen once. Branch `feat/browser-history`.
+Static-host-safe hash routes contain flow/step IDs only. The strict route reader
+rejects malformed escapes, foreign flows and receipt claims. Core `open` remains
+the sole active-path/prerequisite guard. URL boundary has eight regression cases.
+Prior day's main CI 46030831733 passed. Dependency PR #15 is blocked by actual
+TypeScript 7 / typescript-eslint <6.1 peer conflict and would restore the known
+Playwright 1.65.1 Firefox regression; not merged. Optional Actions majors #1/#2
+remain deferred. Remaining v1 scope/external validation gaps above still apply.
+
+Opt-in React history binding now delegates every initial/hash navigation to core,
+replaces denied URLs and pushes successful in-app transitions. Effects run after
+hydration; StrictMode initial deep links are covered. Memory answers stay out of
+both URLs and history state. Browser traversal clears the local demo receipt;
+revisiting review cannot invent success. Review return intent remains transient.
+Working tree: check, 49 unit tests/build and 14 Chromium/WebKit cases passed.
+Linux Firefox and visual recovery inspection pending. No dependencies changed.
+
+History regression coverage now exercises invalid/malformed/receipt links,
+prerequisite recovery, Back/Forward with branch disappearance/reappearance,
+same-step review correction, transient edit intent and receipt/reload recovery.
+All 14 local Chromium/WebKit cases pass. Desktop/360px recovery screenshots
+inspected: readable notice, visible heading focus, no horizontal overflow.
+Loaded-page offline back also passed. No local Firefox/manual screen-reader claim.
+
+Server-render boundary regression passes in Node with no `window`: the opt-in
+history hook produces the same deterministic empty snapshot on repeated renders.
+This does not claim Next.js integration/hydration completion. Current check,
+50 unit/boundary tests and build pass; browser-tested implementation unchanged.
+
+Strict review recorded in decisions/004: reused core guard instead of duplicating
+prerequisite policy, fixed StrictMode initial synchronization and used canonical
+initialState for empty definitions. No new dependencies/casts or structural
+findings remain. Integration guide documents static routing, transient review
+intent, receipt invalidation and exact reproduction/verification limits. Required
+Linux CI and checked-main deployment are next; full v1 is still incomplete.

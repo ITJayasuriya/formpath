@@ -208,3 +208,11 @@ Playwright #44135 matches the axe/label/ARIA reflection crash in Firefox build 1
 date control without axe; all product tests remain. First run tests the existing
 pin to establish the local CI reproduction before selecting a compatible stable
 version. No product markup changes, skips or protection changes.
+
+Linux run 46029891689 at 1d65dd1 reproduced the static axe/label crash with
+Playwright 1.65.1, while the native required-date control passed. Nine cases
+passed; three Firefox cases crashed (static reproduction and both product
+journeys). This isolates the upstream regression without changing the UI.
+Pinned stable runner and axe peer to 1.64.1; local check, 41 core tests, build,
+eight Chromium/WebKit cases passed. npm audit: zero advisories. Required Linux
+CI on the new pin is next. Decision 003 records compatibility and upgrade gate.

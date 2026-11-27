@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "local_date": "2026-11-27",
-  "state": "in_progress",
+  "state": "awaiting_ci",
   "planned_daily_goal": "Memory-only React loan flow with accessible errors and review correction browser journeys",
   "commit_target": 5,
   "completed_unit_ids": [
@@ -18,7 +18,8 @@
     "ded3378",
     "0dd6866",
     "4051360",
-    "1d85ace"
+    "1d85ace",
+    "1d65dd1"
   ],
   "branch": "feat/loan-ui",
   "open_pr": "https://github.com/ITJayasuriya/formpath/pull/14",
@@ -28,10 +29,18 @@
     "CI head 1d85ace run 45882023712: check,41 tests,build,4 Chromium/WebKit passed; 2 Firefox cases crashed with content-process signal 11",
     "CI 4051360 run 45881417690 attempts 1 and 2 also failed Firefox Page crashed",
     "Desktop/360px screenshots inspected; loaded-page offline receipt passed; 200% text no horizontal overflow; forced-colors emulation inspected",
-    "No deployment; live site remains setup marker; no npm publication"
+    "No deployment; live site remains setup marker; no npm publication",
+    "Recovery 1d65dd1 CI46029891689: static axe/label Firefox crash reproduced, native date control passed; 9 passed /3 Firefox crashes.",
+    "Stable1.64.1 working tree: check,41 tests,build,8 Chromium/WebKit passed; audit0 advisories; Linux pending."
   ],
-  "next_action": "Isolate upstream Firefox axe/aria-labelledby regression with static minimal probes; retain all product tests and native semantics.",
-  "dirty_files": ["docs/RUN-STATE.json", "docs/STATUS.md"],
+  "next_action": "Push stable Playwright runner/peer pin and inspect required Linux CI at new exact head; merge PR14 only if reviewed head is green, then build/deploy main and verify live journeys/revision.",
+  "dirty_files": [
+    "package.json",
+    "package-lock.json",
+    "docs/decisions/003-firefox-test-pin.md",
+    "docs/STATUS.md",
+    "docs/RUN-STATE.json"
+  ],
   "blocker": null,
-  "updated_at": "2026-11-27T15:59:42.126500+00:00"
+  "updated_at": "2026-11-27T16:03:06.482242+00:00"
 }

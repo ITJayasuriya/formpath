@@ -4,18 +4,22 @@
   "state": "in_progress",
   "planned_daily_goal": "Guarded browser history and deep-link recovery with retained memory answers",
   "commit_target": 5,
-  "completed_unit_ids": ["strict-url-boundary", "history-binding"],
-  "actual_commit_shas": ["d2740dd"],
+  "completed_unit_ids": [
+    "strict-url-boundary",
+    "history-binding",
+    "history-browser-regressions"
+  ],
+  "actual_commit_shas": ["d2740dd", "b62fbc9"],
   "branch": "feat/browser-history",
   "open_pr": null,
   "last_tested_sha": "f95eaa12f8b5fc5c11f3ac379f8b08717d7cfe20",
   "actual_test_results": [
     "Working tree: check,49 unit tests,build passed;14 Chromium/WebKit browser cases passed; Linux Firefox pending"
   ],
-  "next_action": "Commit guarded history adapter and receipt navigation correction; capture recovery screenshots; add full browser regression coverage",
+  "next_action": "Add server-render boundary regression; document routing policy and strict review, then PR and required Linux CI",
   "dirty_files": ["docs/STATUS.md", "docs/RUN-STATE.json"],
   "blocker": null,
-  "updated_at": "2026-11-27T18:47:27.853473+00:00",
+  "updated_at": "2026-11-27T18:48:09.831058+00:00",
   "integrated_pr": "https://github.com/ITJayasuriya/formpath/pull/14",
   "merge_sha": "f95eaa12f8b5fc5c11f3ac379f8b08717d7cfe20"
 }

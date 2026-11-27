@@ -270,3 +270,10 @@ both URLs and history state. Browser traversal clears the local demo receipt;
 revisiting review cannot invent success. Review return intent remains transient.
 Working tree: check, 49 unit tests/build and 14 Chromium/WebKit cases passed.
 Linux Firefox and visual recovery inspection pending. No dependencies changed.
+
+History regression coverage now exercises invalid/malformed/receipt links,
+prerequisite recovery, Back/Forward with branch disappearance/reappearance,
+same-step review correction, transient edit intent and receipt/reload recovery.
+All 14 local Chromium/WebKit cases pass. Desktop/360px recovery screenshots
+inspected: readable notice, visible heading focus, no horizontal overflow.
+Loaded-page offline back also passed. No local Firefox/manual screen-reader claim.

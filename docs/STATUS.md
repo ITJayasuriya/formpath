@@ -262,3 +262,11 @@ Prior day's main CI 46030831733 passed. Dependency PR #15 is blocked by actual
 TypeScript 7 / typescript-eslint <6.1 peer conflict and would restore the known
 Playwright 1.65.1 Firefox regression; not merged. Optional Actions majors #1/#2
 remain deferred. Remaining v1 scope/external validation gaps above still apply.
+
+Opt-in React history binding now delegates every initial/hash navigation to core,
+replaces denied URLs and pushes successful in-app transitions. Effects run after
+hydration; StrictMode initial deep links are covered. Memory answers stay out of
+both URLs and history state. Browser traversal clears the local demo receipt;
+revisiting review cannot invent success. Review return intent remains transient.
+Working tree: check, 49 unit tests/build and 14 Chromium/WebKit cases passed.
+Linux Firefox and visual recovery inspection pending. No dependencies changed.

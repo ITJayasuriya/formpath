@@ -4,27 +4,18 @@
   "state": "in_progress",
   "planned_daily_goal": "Guarded browser history and deep-link recovery with retained memory answers",
   "commit_target": 5,
-  "completed_unit_ids": [],
-  "actual_commit_shas": [],
+  "completed_unit_ids": ["strict-url-boundary", "history-binding"],
+  "actual_commit_shas": ["d2740dd"],
   "branch": "feat/browser-history",
   "open_pr": null,
   "last_tested_sha": "f95eaa12f8b5fc5c11f3ac379f8b08717d7cfe20",
   "actual_test_results": [
-    "Local 4051360: check,41 core tests,build,4 Chromium/WebKit product tests passed; local Firefox not run",
-    "CI head 1d85ace run 45882023712: check,41 tests,build,4 Chromium/WebKit passed; 2 Firefox cases crashed with content-process signal 11",
-    "CI 4051360 run 45881417690 attempts 1 and 2 also failed Firefox Page crashed",
-    "Desktop/360px screenshots inspected; loaded-page offline receipt passed; 200% text no horizontal overflow; forced-colors emulation inspected",
-    "No deployment; live site remains setup marker; no npm publication",
-    "Recovery 1d65dd1 CI46029891689: static axe/label Firefox crash reproduced, native date control passed; 9 passed /3 Firefox crashes.",
-    "Stable1.64.1 working tree: check,41 tests,build,8 Chromium/WebKit passed; audit0 advisories; Linux pending.",
-    "Required Linux CI46030310618 at c5b7cd1 passed check,41 tests,build,12 browser cases across Chromium/Firefox/WebKit.",
-    "Post-merge f95eaa1: 41 core tests/build passed; deployed once e6e76639; production revision marker exact match; four hosted Chromium/WebKit product journeys passed; desktop/360px screenshots inspected.",
-    "Push-to-main CI46030831733 queued at final inspection; local/hosted Firefox and manual screen readers not run; no npm publication."
+    "Working tree: check,49 unit tests,build passed;14 Chromium/WebKit browser cases passed; Linux Firefox pending"
   ],
-  "next_action": "Inspect existing navigation binding, implement URL adapter using core guard, add browser regressions",
+  "next_action": "Commit guarded history adapter and receipt navigation correction; capture recovery screenshots; add full browser regression coverage",
   "dirty_files": ["docs/STATUS.md", "docs/RUN-STATE.json"],
   "blocker": null,
-  "updated_at": "2026-11-27T18:44:38.564037+00:00",
+  "updated_at": "2026-11-27T18:47:27.853473+00:00",
   "integrated_pr": "https://github.com/ITJayasuriya/formpath/pull/14",
   "merge_sha": "f95eaa12f8b5fc5c11f3ac379f8b08717d7cfe20"
 }

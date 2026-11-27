@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "local_date": "2026-11-27",
-  "state": "awaiting_ci",
+  "state": "in_progress",
   "planned_daily_goal": "Memory-only React loan flow with accessible errors and review correction browser journeys",
   "commit_target": 5,
   "completed_unit_ids": [
@@ -11,17 +11,27 @@
     "accessible-error-pattern",
     "integration-evidence-guide"
   ],
-  "actual_commit_shas": ["e4c59b2", "ea49589", "a845cc8", "ded3378", "0dd6866"],
+  "actual_commit_shas": [
+    "e4c59b2",
+    "ea49589",
+    "a845cc8",
+    "ded3378",
+    "0dd6866",
+    "4051360",
+    "1d85ace"
+  ],
   "branch": "feat/loan-ui",
   "open_pr": "https://github.com/ITJayasuriya/formpath/pull/14",
-  "last_tested_sha": "0dd6866",
+  "last_tested_sha": "1d85acece8ccbd362f91058b37db7892468521b9",
   "actual_test_results": [
-    "check,41 core tests,build passed",
-    "4 product browser tests passed Chromium/WebKit; local Firefox not run",
-    "Desktop/mobile screenshots inspected; existing live site still setup marker"
+    "Local 4051360: check,41 core tests,build,4 Chromium/WebKit product tests passed; local Firefox not run",
+    "CI head 1d85ace run 45882023712: check,41 tests,build,4 Chromium/WebKit passed; 2 Firefox cases crashed with content-process signal 11",
+    "CI 4051360 run 45881417690 attempts 1 and 2 also failed Firefox Page crashed",
+    "Desktop/360px screenshots inspected; loaded-page offline receipt passed; 200% text no horizontal overflow; forced-colors emulation inspected",
+    "No deployment; live site remains setup marker; no npm publication"
   ],
-  "next_action": "Run final browser regression and inspect required CI at exact PR head 0dd6866; merge normally if green then deploy and verify actual journey/revision",
-  "dirty_files": ["docs/STATUS.md", "docs/RUN-STATE.json"],
+  "next_action": "Isolate upstream Firefox axe/aria-labelledby regression with static minimal probes; retain all product tests and native semantics.",
+  "dirty_files": ["docs/RUN-STATE.json", "docs/STATUS.md"],
   "blocker": null,
-  "updated_at": "2026-11-26T19:07:51.924849+00:00"
+  "updated_at": "2026-11-27T15:59:42.126500+00:00"
 }

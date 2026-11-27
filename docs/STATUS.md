@@ -168,3 +168,43 @@ No merge/deployment until the actual cause is resolved and required CI passes.
 Production-build loaded-page offline journey passed locally; 200% text at 360px
 had no horizontal overflow, and emulated forced-colors error screenshot was
 inspected (not a Windows high-contrast/manual screen-reader claim).
+
+### Run outcome — 27 November
+
+Seven actual commits (target five; two required accessibility/CI corrections):
+`e4c59b2`, `ea49589`, `a845cc8`, `ded3378`, `0dd6866`, `4051360`, `1d85ace`.
+PR https://github.com/ITJayasuriya/formpath/pull/14 remains open on
+`1d85acece8ccbd362f91058b37db7892468521b9`.
+
+Required Linux diagnostic CI failed:
+https://github.com/ITJayasuriya/formpath/actions/runs/45882023712.
+Check/41 core tests/build and four Chromium/WebKit product cases passed there;
+two Firefox cases crashed. Process diagnostics show Firefox content processes
+exiting on signal 11, not an assertion failure. The cause is NOT yet established;
+the namespace EPERM warning alone is not proof of cause. Earlier CI attempt and
+one bounded retry at 4051360 failed at the same two operations. No further blind
+retries, test skips, weakened protection, merge or deployment were performed.
+
+Last local product-tested code: 4051360 (check, 41 tests, build and four browser
+cases). Head 1d85ace changes only CI diagnostics/status and passed local check;
+its CI confirms the same passing non-Firefox checks. Current deployed site is
+still the setup marker, verified before work. No release/package publication.
+Final operational checkpoint/status changes remain local for recovery.
+
+Next concrete action: on this same branch/PR, add minimal Linux Firefox probes
+for native required date-input fill and axe on static markup, compare their
+content-process failures with the loan journey, then fix the established cause.
+Keep all six required product cases. Review and rerun required CI on the final
+head, merge normally only when green, then build/deploy checked main and verify
+the full hosted journey plus footer revision. Today's implementation is useful
+but daily integration is unfinished; retain the selected target and seven commits
+on same-date recovery. No full delivery day has been marked completed and the
+5 January deadline is unchanged. No owner credential/action is needed now.
+
+### 27 November recovery — isolate browser regression
+
+Resumed PR #14, retaining target five and all seven prior commits. Upstream
+Playwright #44135 matches the axe/label/ARIA reflection crash in Firefox build 1572. Added independent static named-region/axe/date probe and a native required
+date control without axe; all product tests remain. First run tests the existing
+pin to establish the local CI reproduction before selecting a compatible stable
+version. No product markup changes, skips or protection changes.

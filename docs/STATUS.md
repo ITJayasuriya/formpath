@@ -277,3 +277,8 @@ same-step review correction, transient edit intent and receipt/reload recovery.
 All 14 local Chromium/WebKit cases pass. Desktop/360px recovery screenshots
 inspected: readable notice, visible heading focus, no horizontal overflow.
 Loaded-page offline back also passed. No local Firefox/manual screen-reader claim.
+
+Server-render boundary regression passes in Node with no `window`: the opt-in
+history hook produces the same deterministic empty snapshot on repeated renders.
+This does not claim Next.js integration/hydration completion. Current check,
+50 unit/boundary tests and build pass; browser-tested implementation unchanged.
